@@ -11,15 +11,12 @@ namespace LemonadeStand
         //has a
         private double noOfCustomers;
         public Weather weather;
-     
 
         //constructor
         public Day()
         {
-            weather = new Weather();
-           
-        }
 
+        }
 
         //can do
 

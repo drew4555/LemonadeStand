@@ -10,10 +10,11 @@ namespace LemonadeStand
     {
         //has a //member variables
         private List<int> forcastedTemps;
-        private int forecastedTemperature;
         public int actualTemp;
         public List<string> weatherConditions;
+        public string currentCondition;
         private int index;
+
         //constructor
         public Weather()
         {
@@ -23,38 +24,48 @@ namespace LemonadeStand
             weatherConditions.Add("cloudy");
             weatherConditions.Add("raining");
             weatherConditions.Add("muggy");
-            GetForcastedTemp();
-            GetActualTemp();
-            GetWeatherCondition();
-            // DisplayWeather();
         }
         //can do //member methods
-        private void GetForcastedTemp()
+        public void GetForcastedTemp()
         {
-            Random ForcastedTemp = new Random();
+            Random ForcastedTemps = new Random();
             while (forcastedTemps.Count < 7)
             {
-                forcastedTemps.Add(ForcastedTemp.Next(60, 100));
+                forcastedTemps.Add(ForcastedTemps.Next(60, 100));
             }
         }
-        private int GetActualTemp()
+        public int GetActualTemp()
         {
             Random ActualTemp = new Random();
             actualTemp = ActualTemp.Next(60, 100);
             return actualTemp;
         }
-        private string GetWeatherCondition()
+        public string GetWeatherCondition()
         {
             Random WeatherCondition = new Random();
             index = WeatherCondition.Next(weatherConditions.Count);
-            return weatherConditions[index];
+            if (weatherConditions[index] == "sunny")
+            {
+                currentCondition = "sunny";
+            }
+            else if (weatherConditions[index] == "muggy")
+            {
+                currentCondition = "muggy";
+            }
+            else if (weatherConditions[index] == "raining")
+            {
+                currentCondition = "raining";
+            }
+            else if (weatherConditions[index] == "cloudy") 
+            {
+                currentCondition = "cloudy";
+            }
+            return currentCondition;
         }
         public void DisplayWeather()
         {
-        //    Console.WriteLine("7 day forcast:");
-        //    forcastedTemps.ForEach(i => Console.Write("{0}\t", i))  ;
             Console.WriteLine("\nactual temp: " + actualTemp);
-            Console.WriteLine("It is currently " + weatherConditions[index]);
+            Console.WriteLine("It is currently " + currentCondition);
             Console.ReadKey();
         }
     }

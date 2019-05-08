@@ -9,44 +9,11 @@ namespace LemonadeStand
     class Store
     {
         //has a 
-        private string lemons;
-        private string sugar;
-        private string ice;
-        private string cups;
-        private double lemons5;
-        private double lemons10;
-        private double lemons20;
-        private double sugar5;
-        private double sugar10;
-        private double sugar20;
-        private double ice5;
-        private double ice10;
-        private double ice20;
-        private double cups25;
-        private double cups50;
-        private double cups100;
-        public double totallemons;
-        public double totalsugar;
-        public double totalice;
-        public double totalcups;
         
         //constructor
         public Store()
         {
-            lemons5 = 1.00;
-            lemons10 = 2.00;
-            lemons20 = 3.00;
-            sugar5 = 1.00;
-            sugar10 = 2.00;
-            sugar20 = 3.00;
-            ice5 = 1.00;
-            ice10 = 2.00;
-            ice20 = 3.00;
-            cups25 = 1.00;
-            cups50 = 2.00;
-            cups100 = 3.00;
-            
-           
+
         }
 
         //can do
@@ -65,18 +32,22 @@ namespace LemonadeStand
             {
                 case "lemons":
                     BuyLemons(player);
+                    ContinueShopping(player);
                     break;
 
                 case "sugar":
                     BuySugar(player);
+                    ContinueShopping(player);
                     break;
 
                 case "ice":
                     BuyIce(player);
+                    ContinueShopping(player);
                     break;
 
                 case "cups":
                     BuyCups(player);
+                    ContinueShopping(player);
                     break;
 
                 default:
@@ -111,12 +82,12 @@ namespace LemonadeStand
                     break;
 
                 case "10":
-                    player.inventory.lemons += 5;
+                    player.inventory.lemons += 10;
                     player.playerwallet -= 2.00;
                     break;
 
                 case "20":
-                    player.inventory.lemons += 5;
+                    player.inventory.lemons += 20;
                     player.playerwallet -= 3.00;
                     break;
 
@@ -186,17 +157,17 @@ namespace LemonadeStand
             {
                 case "25":
                     player.inventory.cups += 25;
-                    player.playerwallet -= 1.00;
+                    player.inventory.playercash -= 1.00;
                     break;
 
                 case "50":
                     player.inventory.cups += 50;
-                    player.playerwallet -= 2.00;
+                    player.inventory.playercash -= 2.00;
                     break;
 
                 case "100":
                     player.inventory.cups += 100;
-                    player.playerwallet -= 3.00;
+                    player.inventory.playercash -= 3.00;
                     break;
 
                 default:

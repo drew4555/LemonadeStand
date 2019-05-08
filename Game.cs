@@ -12,6 +12,10 @@ namespace LemonadeStand
         public List<Day> daysPlayed;
         public Store store;
         public Player player;
+        public Weather weather;
+        public Day day;
+        public Inventory inventory;
+        public Recipe recipe;
 
 
 
@@ -21,14 +25,23 @@ namespace LemonadeStand
         public Game()
         {
             daysPlayed = new List<Day>();
+            player = new Player();
+            store = new Store();
+            weather = new Weather();
+            inventory = new Inventory();
+            recipe = new Recipe();
         }
         //can do
         public void RunGame()
         {
             Start();
             GetDays();
-            player = new Player();
-            store = new Store();
+
+            weather.GetForcastedTemp();
+            weather.GetActualTemp();
+            weather.DisplayWeather();
+            inventory.DisplayCurrentInventory();
+
             Console.WriteLine("Do you want to go to store?");
             string shop = Console.ReadLine().ToLower();
             switch (shop)
@@ -45,6 +58,27 @@ namespace LemonadeStand
                         break;
                     }
             }
+            Console.Clear();
+            weather.DisplayWeather();
+            player.inventory.DisplayCurrentInventory();
+            Console.ReadKey();
+            Console.WriteLine("Would you like to change the current recipe");
+            string recipechange = Console.ReadLine().ToLower();
+            switch (recipechange)
+            {
+                case "yes":
+                    recipe.ChooseLemons();
+                    recipe.ChooseSugar();
+                    recipe.ChooseIce();
+                    recipe.MixLemonade();
+                    recipe.PriceofLemonade();
+                    break;
+
+                case "no":
+                    //day.RunDay();
+                    break;
+            }
+            
 
 
                     //for(int i= 0; i < daysPlayed.Count; i++)

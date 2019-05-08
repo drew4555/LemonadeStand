@@ -9,7 +9,7 @@ namespace LemonadeStand
     class Customer
     {
         //has a
-        private double choice;
+        private int priceDemand;
 
         //constructor
         public Customer()
@@ -17,6 +17,8 @@ namespace LemonadeStand
 
         }
         //can do
+        
+
 
 
     }

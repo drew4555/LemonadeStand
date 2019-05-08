@@ -14,6 +14,7 @@ namespace LemonadeStand
         public int ice;
         public int cups;
         public double playercash;
+        public Player player;
 
         //constructor
         public Inventory()
@@ -34,6 +35,7 @@ namespace LemonadeStand
             Console.WriteLine("Sugar: " + sugar);
             Console.WriteLine("Ice: " + ice);
             Console.WriteLine("Cups: " + cups);
+            Console.WriteLine("remaing Money: $" + playercash);
         }
 
     }
