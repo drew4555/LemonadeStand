@@ -15,6 +15,7 @@ namespace LemonadeStand
         public int cup;
         public double lemonadePrice;
         public double lemonadeRecipe;
+        public int pitcher;
 
         //constructor
         public Recipe()
@@ -48,10 +49,10 @@ namespace LemonadeStand
             lemonadePrice = double.Parse(Console.ReadLine());
             return lemonadePrice;
         }
-        public double MixLemonade()
+        public double MakePitcher()
         {
-            lemonadeRecipe = sugar + ice + lemon + cup;
-            return lemonadeRecipe;
+            pitcher = sugar + ice + lemon;
+            return pitcher;
         }
         public void DisplayCurrentRecipe()
         {

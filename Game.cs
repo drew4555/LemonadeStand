@@ -75,7 +75,7 @@ namespace LemonadeStand
                     recipe.ChooseLemons();
                     recipe.ChooseSugar();
                     recipe.ChooseIce();
-                    recipe.MixLemonade();
+                    recipe.MakePitcher();
                     recipe.PriceofLemonade();
                     break;
 
@@ -84,6 +84,7 @@ namespace LemonadeStand
                     break;
             }
             customer.getRandomCustomers(weather);
+            customer.CustomersBuying(weather);
             customer.DisplayCustomers();
             
             

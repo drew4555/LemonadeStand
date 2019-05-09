@@ -9,15 +9,15 @@ namespace LemonadeStand
     public class Customer
     {
         //has a
-        private int priceDemand;
+        public List<double> AmountOfPurchases;
         public List <Customer> AmountOfCustomers;
-        
         public Weather weather;
 
         //constructor
         public Customer()
         {
             AmountOfCustomers = new List<Customer>();
+            AmountOfPurchases = new List<double>();
         }
         //can do
         public void getRandomCustomers(Weather weather)
@@ -60,11 +60,50 @@ namespace LemonadeStand
                 }
             }
         }
+        public void CustomersBuying(Weather weather)
+        {
+            if (weather.currentCondition == "sunny")
+            {
+                Random custbuy = new Random();
+                int Customerbuy = custbuy.Next(30, AmountOfCustomers.Count);
+                for (int i = 0; i < Customerbuy; i++)
+                {
+                    AmountOfPurchases.Add(1);
+                }
+            }
+            else if (weather.currentCondition == "cloudy")
+            {
+                Random custbuy = new Random();
+                int Customerbuy = custbuy.Next(23, AmountOfCustomers.Count);
+                for (int i = 0; i < Customerbuy; i++)
+                {
+                    AmountOfPurchases.Add(1);
+                }
+            }
+            else if (weather.currentCondition == "muggy")
+            {
+                Random custbuy = new Random();
+                int Customerbuy = custbuy.Next(18, AmountOfCustomers.Count);
+                for (int i = 0; i < Customerbuy; i++)
+                {
+                    AmountOfPurchases.Add(1);
+                }
+            }
+            else if (weather.currentCondition == "raining")
+            {
+                Random custbuy = new Random();
+                int Customerbuy = custbuy.Next(10, AmountOfCustomers.Count);
+                for (int i = 0; i < Customerbuy; i++)
+                {
+                    AmountOfPurchases.Add(1);
+                }
+            }
+        }
         public void DisplayCustomers()
         {
             Console.WriteLine("Number of customers Today " + AmountOfCustomers.Count);
+            Console.WriteLine("Customers purchased " + AmountOfPurchases.Count + " " + "today");
             Console.ReadKey();
         }
-
     }
 }

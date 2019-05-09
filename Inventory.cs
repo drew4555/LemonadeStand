@@ -14,7 +14,6 @@ namespace LemonadeStand
         public int ice;
         public int cups;
         public double playercash;
-        public Player player;
 
         //constructor
         public Inventory()
