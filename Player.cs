@@ -10,18 +10,46 @@ namespace LemonadeStand
     {
         //has a 
         public Inventory inventory;
-        public double playerwallet;
+        public Pitcher pitcher;
+        public Recipe recipe;
 
         //spawner
         public Player()
         {
             inventory = new Inventory();
-            playerwallet = 25;
         }
-        
 
-     //can do
-
-
+        //can do
+        public void ChooseLemons()
+        {
+            Console.WriteLine("how many Lemons do you want to use?");
+            recipe.lemon = int.Parse(Console.ReadLine());
+        }
+        public void ChooseSugar()
+        {
+            Console.WriteLine("how much sugar do you want to use?");
+            recipe.sugar = int.Parse(Console.ReadLine());
+        }
+        public void ChooseIce()
+        {
+            Console.WriteLine("how much sugar do you want to use?");
+            recipe.ice = int.Parse(Console.ReadLine());
+        }
+        public void PriceofLemonade()
+        {
+            Console.WriteLine("how much do you want to charge for your lemonade?");
+            recipe.lemonadePrice = double.Parse(Console.ReadLine());
+        }
+        public void SellLemonade(Player player, Pitcher pitcher)
+        {
+            while (pitcher.cupsToPitcher > 0)
+            {
+                pitcher.cupsToPitcher--;
+                if(pitcher.cupsToPitcher == 0)
+                {
+                    pitcher = new Pitcher(player,recipe);
+                }
+            }
+        }
     }
 }

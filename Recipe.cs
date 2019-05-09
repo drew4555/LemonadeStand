@@ -14,8 +14,6 @@ namespace LemonadeStand
         public int ice;
         public int cup;
         public double lemonadePrice;
-        public double lemonadeRecipe;
-        public int pitcher;
 
         //constructor
         public Recipe()
@@ -23,41 +21,17 @@ namespace LemonadeStand
             lemon = 4;
             sugar = 4;
             ice = 4;
-            cup = 1;
             lemonadePrice = .25;
         }
 
         //member methods
-        public void ChooseLemons()
-        {
-            Console.WriteLine("how many Lemons do you want to use?");
-            lemon = int.Parse(Console.ReadLine());
-        }
-        public void ChooseSugar()
-        {
-            Console.WriteLine("how much sugar do you want to use?");
-            sugar = int.Parse(Console.ReadLine());
-        }
-        public void ChooseIce()
-        {
-            Console.WriteLine("how much sugar do you want to use?");
-            ice = int.Parse(Console.ReadLine());
-        }
-        public double PriceofLemonade()
-        {
-            Console.WriteLine("how much do you want to charge for your lemonade?");
-            lemonadePrice = double.Parse(Console.ReadLine());
-            return lemonadePrice;
-        }
-        public double MakePitcher()
-        {
-            pitcher = sugar + ice + lemon;
-            return pitcher;
-        }
+        
+        
         public void DisplayCurrentRecipe()
         {
             Console.WriteLine("The current lemonade recipe is\n " + lemon + " " + "Lemons, " + sugar + " " + "Sugar, and "
                 + ice + " " + "Ice, ");
+            Console.WriteLine("The current price of the lemonade is " + lemonadePrice);
         }
 
         

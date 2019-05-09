@@ -26,7 +26,6 @@ namespace LemonadeStand
         }
 
         //can do
-
         public void DisplayCurrentInventory()
         {
             Console.WriteLine("CurrentInventory");
@@ -36,6 +35,5 @@ namespace LemonadeStand
             Console.WriteLine("Cups: " + cups);
             Console.WriteLine("Remaing Money: $" + playercash);
         }
-
     }
 }

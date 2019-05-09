@@ -16,7 +16,7 @@ namespace LemonadeStand
         public Day day;
         public Inventory inventory;
         public Recipe recipe;
-        public Customer customer;
+        public CustomerBase customer;
 
 
 
@@ -25,14 +25,7 @@ namespace LemonadeStand
         //spawner
         public Game()
         {
-            daysPlayed = new List<Day>();
-            player = new Player();
-            store = new Store();
-            weather = new Weather();
-            inventory = new Inventory();
-            recipe = new Recipe();
-            customer = new Customer();
-            
+            RunGame();
         }
         //can do
         public void RunGame()
@@ -40,70 +33,66 @@ namespace LemonadeStand
             Start();
             GetDays();
 
-            weather.GetForcastedTemp();
-            weather.GetActualTemp();
-            weather.GetWeatherCondition();
-            weather.DisplayWeather();
-            inventory.DisplayCurrentInventory();
-
-            Console.WriteLine("Do you want to go to store?");
-            string shop = Console.ReadLine().ToLower();
-            switch (shop)
+            while (daysPlayed.Count > 0)
             {
-                case "yes":
-                    {
-                        Console.Clear();
-                        store.DisplayPrices();
-                        store.Shopping(player);
+                new Weather();
+                inventory.DisplayCurrentInventory();
+                Console.WriteLine("Do you want to go to store?");
+                string shop = Console.ReadLine().ToLower();
+                switch (shop)
+                {
+                    case "yes":
+                        {
+                            Console.Clear();
+                            store.DisplayPrices();
+                            store.Shopping(player);
+                            break;
+                        }
+                    case "no":
+                        {
+                            break;
+                        }
+                }
+                Console.Clear();
+                weather.DisplayWeather();
+                player.inventory.DisplayCurrentInventory();
+                Console.ReadKey();
+                recipe.DisplayCurrentRecipe();
+                Console.WriteLine("Would you like to change the current recipe");
+                string recipechange = Console.ReadLine().ToLower();
+                switch (recipechange)
+                {
+                    case "yes":
+                        player.ChooseLemons();
+                        player.ChooseSugar();
+                        player.ChooseIce();
+                        player.PriceofLemonade();
                         break;
-                    }
-                case "no":
-                    {
+
+                    case "no":
+                        //day.RunDay();
                         break;
-                    }
-            }
-            Console.Clear();
-            weather.DisplayWeather();
-            player.inventory.DisplayCurrentInventory();
-            Console.ReadKey();
-            recipe.DisplayCurrentRecipe();
-            Console.WriteLine("Would you like to change the current recipe");
-            string recipechange = Console.ReadLine().ToLower();
-            switch (recipechange)
-            {
-                case "yes":
-                    recipe.ChooseLemons();
-                    recipe.ChooseSugar();
-                    recipe.ChooseIce();
-                    recipe.MakePitcher();
-                    recipe.PriceofLemonade();
-                    break;
+                }
+                customer.getRandomCustomers(weather);
+                customer.DisplayCustomers();
 
-                case "no":
-                    //day.RunDay();
-                    break;
             }
-            customer.getRandomCustomers(weather);
-            customer.CustomersBuying(weather);
-            customer.DisplayCustomers();
+
+
+                //for(int i= 0; i < daysPlayed.Count; i++)
+                //{
+                //    // run a whole day!
+                //    // display weather 
+                //    // display forcast
+                //    // ask to go to store
+                //    // run stand
+                //    // get end of day report
+                //    daysPlayed[i].weather.DisplayWeather();
+
+
+
+
             
-            
-
-
-                    //for(int i= 0; i < daysPlayed.Count; i++)
-                    //{
-                    //    // run a whole day!
-                    //    // display weather 
-                    //    // display forcast
-                    //    // ask to go to store
-                    //    // run stand
-                    //    // get end of day report
-                    //    daysPlayed[i].weather.DisplayWeather();
-
-
-
-
-            }
 
             void Start()
             {
@@ -154,6 +143,7 @@ namespace LemonadeStand
             }
         }
     }
+}
 
 
 

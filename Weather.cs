@@ -24,6 +24,10 @@ namespace LemonadeStand
             weatherConditions.Add("cloudy");
             weatherConditions.Add("raining");
             weatherConditions.Add("muggy");
+            GetForcastedTemp();
+            GetActualTemp();
+            GetWeatherCondition();
+            DisplayWeather();
         }
         //can do //member methods
         public void GetForcastedTemp()
