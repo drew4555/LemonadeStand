@@ -15,7 +15,8 @@ namespace LemonadeStand
         //constructor
         public Day()
         {
-            new CustomerBase();
+            weather = new Weather();
+            customer = new CustomerBase(weather);
 
 
         }

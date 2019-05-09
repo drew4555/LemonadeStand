@@ -16,19 +16,22 @@ namespace LemonadeStand
         public Day day;
         public Inventory inventory;
         public Recipe recipe;
-        public CustomerBase customer;
-
-
-
-
+        public CustomerBase customerbase;
+        public Customer customer;
 
         //spawner
         public Game()
         {
-            RunGame();
+            
+            daysPlayed = new List<Day>();
+            player = new Player();
+            store = new Store();
+            inventory = new Inventory();
+            recipe = new Recipe();
+            RunGame(daysPlayed, customerbase, player);
         }
         //can do
-        public void RunGame()
+        public void RunGame(List<Day> daysPlayed, CustomerBase customerbase, Player player)
         {
             Start();
             GetDays();
@@ -36,7 +39,7 @@ namespace LemonadeStand
             while (daysPlayed.Count > 0)
             {
                 new Weather();
-                inventory.DisplayCurrentInventory();
+                player.inventory.DisplayCurrentInventory();
                 Console.WriteLine("Do you want to go to store?");
                 string shop = Console.ReadLine().ToLower();
                 switch (shop)
@@ -54,10 +57,10 @@ namespace LemonadeStand
                         }
                 }
                 Console.Clear();
-                weather.DisplayWeather();
+                daysPlayed[0].weather.DisplayWeather();
                 player.inventory.DisplayCurrentInventory();
                 Console.ReadKey();
-                recipe.DisplayCurrentRecipe();
+                player.recipe.DisplayCurrentRecipe();
                 Console.WriteLine("Would you like to change the current recipe");
                 string recipechange = Console.ReadLine().ToLower();
                 switch (recipechange)
@@ -70,11 +73,10 @@ namespace LemonadeStand
                         break;
 
                     case "no":
-                        //day.RunDay();
                         break;
                 }
-                customer.getRandomCustomers(weather);
-                customer.DisplayCustomers();
+                customerbase.DisplayCustomers();
+               
 
             }
 

@@ -17,6 +17,7 @@ namespace LemonadeStand
         public Player()
         {
             inventory = new Inventory();
+            recipe = new Recipe();
         }
 
         //can do

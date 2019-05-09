@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    public class Customer : CustomerBase
+    public class Customer
     {
         //member varaibles
+        public Weather weather;
 
         //constructor
-        public Customer()
+        public Customer(Weather weather)
         {
-            ChooseToBuy(weather);
+            this.weather = weather;
+            ChooseToBuy();
         }
 
         //member methods
-        public bool ChooseToBuy(Weather weather)
+        public bool ChooseToBuy()
         {
             Random isbuy = new Random();
             int Isbuying = isbuy.Next(0, 100);

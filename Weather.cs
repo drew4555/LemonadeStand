@@ -27,7 +27,6 @@ namespace LemonadeStand
             GetForcastedTemp();
             GetActualTemp();
             GetWeatherCondition();
-            DisplayWeather();
         }
         //can do //member methods
         public void GetForcastedTemp()

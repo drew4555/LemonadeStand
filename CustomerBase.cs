@@ -11,26 +11,26 @@ namespace LemonadeStand
         //has a
         public List <Customer> AmountOfCustomers;
         public Weather weather;
-
+        public List<string> weatherConditions;
 
         //constructor
-        public CustomerBase()
+        public CustomerBase(Weather weather)
         {
+            this.weather = weather;
             AmountOfCustomers = new List<Customer>();
             getRandomCustomers(weather);
-            DisplayCustomers();
         }
         //can do
         public void getRandomCustomers(Weather weather)
         {
-           
+            
             if (weather.currentCondition == "sunny")
             {
                 Random CustomerNumber = new Random();
                 int customerNumber = CustomerNumber.Next(40, 50);
                 for (int i = 0; i < customerNumber; i++)
                 {
-                    AmountOfCustomers.Add (new Customer());
+                    AmountOfCustomers.Add (new Customer(weather));
                 }
             }
             else if (weather.currentCondition == "cloudy")
@@ -39,7 +39,7 @@ namespace LemonadeStand
                 int customerNumber1 = CustomerNumber1.Next(35, 39);
                 for (int i = 0; i < customerNumber1; i++)
                 {
-                    AmountOfCustomers.Add(new Customer());
+                    AmountOfCustomers.Add(new Customer(weather));
                 }
             }
             else if (weather.currentCondition == "muggy")
@@ -48,7 +48,7 @@ namespace LemonadeStand
                 int customerNumber = CustomerNumber.Next(28, 34);
                 for (int i = 0; i < customerNumber; i++)
                 {
-                    AmountOfCustomers.Add(new Customer());
+                    AmountOfCustomers.Add(new Customer(weather));
                 }
             }
             else if (weather.currentCondition == "raining")
@@ -57,7 +57,7 @@ namespace LemonadeStand
                 int customerNumber = CustomerNumber.Next(17, 27);
                 for (int i = 0; i < customerNumber; i++)
                 {
-                    AmountOfCustomers.Add(new Customer());
+                    AmountOfCustomers.Add(new Customer(weather));
                 }
             }
         }
