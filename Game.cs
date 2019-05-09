@@ -16,6 +16,7 @@ namespace LemonadeStand
         public Day day;
         public Inventory inventory;
         public Recipe recipe;
+        public Customer customer;
 
 
 
@@ -30,6 +31,8 @@ namespace LemonadeStand
             weather = new Weather();
             inventory = new Inventory();
             recipe = new Recipe();
+            customer = new Customer();
+            
         }
         //can do
         public void RunGame()
@@ -39,6 +42,7 @@ namespace LemonadeStand
 
             weather.GetForcastedTemp();
             weather.GetActualTemp();
+            weather.GetWeatherCondition();
             weather.DisplayWeather();
             inventory.DisplayCurrentInventory();
 
@@ -48,9 +52,9 @@ namespace LemonadeStand
             {
                 case "yes":
                     {
+                        Console.Clear();
                         store.DisplayPrices();
                         store.Shopping(player);
-                        store.ContinueShopping(player);
                         break;
                     }
                 case "no":
@@ -62,6 +66,7 @@ namespace LemonadeStand
             weather.DisplayWeather();
             player.inventory.DisplayCurrentInventory();
             Console.ReadKey();
+            recipe.DisplayCurrentRecipe();
             Console.WriteLine("Would you like to change the current recipe");
             string recipechange = Console.ReadLine().ToLower();
             switch (recipechange)
@@ -78,6 +83,9 @@ namespace LemonadeStand
                     //day.RunDay();
                     break;
             }
+            customer.getRandomCustomers(weather);
+            customer.DisplayCustomers();
+            
             
 
 

@@ -35,7 +35,7 @@ namespace LemonadeStand
             Console.WriteLine("Sugar: " + sugar);
             Console.WriteLine("Ice: " + ice);
             Console.WriteLine("Cups: " + cups);
-            Console.WriteLine("remaing Money: $" + playercash);
+            Console.WriteLine("Remaing Money: $" + playercash);
         }
 
     }

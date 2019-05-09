@@ -53,6 +53,11 @@ namespace LemonadeStand
             lemonadeRecipe = sugar + ice + lemon + cup;
             return lemonadeRecipe;
         }
+        public void DisplayCurrentRecipe()
+        {
+            Console.WriteLine("The current lemonade recipe is\n " + lemon + " " + "Lemons, " + sugar + " " + "Sugar, and "
+                + ice + " " + "Ice, ");
+        }
 
         
 

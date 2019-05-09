@@ -8,7 +8,8 @@ namespace LemonadeStand
 {
     class Store
     {
-        //has a 
+        //member variables
+
         
         //constructor
         public Store()
@@ -16,7 +17,7 @@ namespace LemonadeStand
 
         }
 
-        //can do
+        //member methods
        public void DisplayPrices()
        {
             Console.WriteLine("Prices are as follows: Lemons:\n 5 for 1.00\n 10 for 2.00\n 20 for 3.00\n" +
@@ -72,23 +73,23 @@ namespace LemonadeStand
 
         public void BuyLemons(Player player)
         {
-            Console.WriteLine("How many lemons would you like to buy? ((5, 10, or 20,)");
+            Console.WriteLine("How many lemons would you like to buy? (5, 10, or 20,)");
             string quantity = Console.ReadLine();
             switch (quantity)
             {
                 case "5":
                     player.inventory.lemons += 5;
-                    player.playerwallet -= 1.00;
+                    player.inventory.playercash -= 1.00;
                     break;
 
                 case "10":
                     player.inventory.lemons += 10;
-                    player.playerwallet -= 2.00;
+                    player.inventory.playercash -= 2.00;
                     break;
 
                 case "20":
                     player.inventory.lemons += 20;
-                    player.playerwallet -= 3.00;
+                    player.inventory.playercash -= 3.00;
                     break;
 
                 default:
@@ -105,17 +106,17 @@ namespace LemonadeStand
             {
                 case "5":
                     player.inventory.sugar += 5;
-                    player.playerwallet -= 1.00;
+                    player.inventory.playercash -= 1.00;
                     break;
 
                 case "10":
                     player.inventory.sugar += 10;
-                    player.playerwallet -= 2.00;
+                    player.inventory.playercash -= 2.00;
                     break;
 
                 case "20":
                     player.inventory.sugar += 20;
-                    player.playerwallet -= 3.00;
+                    player.inventory.playercash -= 3.00;
                     break;
 
                 default:
@@ -131,17 +132,17 @@ namespace LemonadeStand
             {
                 case "5":
                     player.inventory.ice += 5;
-                    player.playerwallet -= 1.00;
+                    player.inventory.playercash -= 1.00;
                     break;
 
                 case "10":
                     player.inventory.ice += 10;
-                    player.playerwallet -= 2.00;
+                    player.inventory.playercash -= 2.00;
                     break;
 
                 case "20":
                     player.inventory.ice += 20;
-                    player.playerwallet -= 3.00;
+                    player.inventory.playercash -= 3.00;
                     break;
 
                 default:

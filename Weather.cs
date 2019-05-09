@@ -64,9 +64,9 @@ namespace LemonadeStand
         }
         public void DisplayWeather()
         {
-            Console.WriteLine("\nactual temp: " + actualTemp);
+            Console.WriteLine("actual temp: " + actualTemp);
             Console.WriteLine("It is currently " + currentCondition);
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
