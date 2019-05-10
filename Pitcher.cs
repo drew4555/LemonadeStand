@@ -9,8 +9,6 @@ namespace LemonadeStand
     class Pitcher
     {
         //member variables
-        public Player player;
-        public Recipe recipe;
         public double pitcher;
         public double cupsToPitcher;
         //constructor

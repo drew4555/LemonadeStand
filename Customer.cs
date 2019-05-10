@@ -12,17 +12,17 @@ namespace LemonadeStand
         public Weather weather;
 
         //constructor
-        public Customer(Weather weather)
+        public Customer(Weather weather, Random isBuy)
         {
+ 
             this.weather = weather;
-            ChooseToBuy();
+            ChooseToBuy(isBuy);
         }
 
         //member methods
-        public bool ChooseToBuy()
+        public bool ChooseToBuy(Random isBuy)
         {
-            Random isbuy = new Random();
-            int Isbuying = isbuy.Next(0, 100);
+            int Isbuying = isBuy.Next(0, 101);
             if (Isbuying % 2 == 0 && weather.currentCondition == "sunny")
             {
                 return true;

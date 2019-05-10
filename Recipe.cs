@@ -12,7 +12,6 @@ namespace LemonadeStand
         public int lemon;
         public int sugar;
         public int ice;
-        public int cup;
         public double lemonadePrice;
 
         //constructor

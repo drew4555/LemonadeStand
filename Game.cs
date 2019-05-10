@@ -12,36 +12,32 @@ namespace LemonadeStand
         public List<Day> daysPlayed;
         public Store store;
         public Player player;
-        public Weather weather;
-        public Day day;
-        public Inventory inventory;
-        public Recipe recipe;
-        public CustomerBase customerbase;
-        public Customer customer;
-        public List<Customer> AmountOfCustomers;
         public int i;
-
+        public CustomerBase customerbase;
+        public int c;
+        public Random rando;
         //spawner
         public Game()
         {
-            i = 1;
+            rando = new Random();
+            i = 0;
             daysPlayed = new List<Day>();
             player = new Player();
             store = new Store();
-            inventory = new Inventory();
-            recipe = new Recipe();
-            AmountOfCustomers = new List<Customer>();
-            RunGame(daysPlayed, player);
+            RunGame(daysPlayed,player,customerbase);
 
         }
         //can do
-        public void RunGame(List<Day> daysPlayed, Player player)
+        public void RunGame(List<Day> daysPlayed, Player player, CustomerBase customerbase)
         {
+            
+
             Start();
             GetDays();
-            while (i <= daysPlayed.Count)
+            while (i <= daysPlayed.Count - 1)
             {
-                new Weather();
+            
+                Console.WriteLine("day " + (i + 1));
                 player.inventory.DisplayCurrentInventory();
                 Console.WriteLine("Do you want to go to store?");
                 string shop = Console.ReadLine().ToLower();
@@ -60,9 +56,8 @@ namespace LemonadeStand
                         }
                 }
                 Console.Clear();
-                daysPlayed[0].weather.DisplayWeather();
+                daysPlayed[i].weather.DisplayWeather();
                 player.inventory.DisplayCurrentInventory();
-                Console.ReadKey();
                 player.recipe.DisplayCurrentRecipe();
                 Console.WriteLine("Would you like to change the current recipe");
                 string recipechange = Console.ReadLine().ToLower();
@@ -101,21 +96,21 @@ namespace LemonadeStand
                     case "7":
                         while (daysPlayed.Count < 7)
                         {
-                            Day day1 = new Day();
+                            Day day1 = new Day(rando);
                             daysPlayed.Add(day1);
                         }
                         break;
                     case "14":
                         while (daysPlayed.Count < 14)
                         {
-                            Day day1 = new Day();
+                            Day day1 = new Day(rando);
                             daysPlayed.Add(day1);
                         }
                         break;
                     case "30":
                         while (daysPlayed.Count < 30)
                         {
-                            Day day1 = new Day();
+                            Day day1 = new Day(rando);
                             daysPlayed.Add(day1);
                         }
                         break;
@@ -130,10 +125,13 @@ namespace LemonadeStand
                 Console.ReadKey();
                 Console.Clear();
             }
-            void DisplayCustomers()
+             void DisplayCustomers()
             {
-                Console.WriteLine("Number of customers Today " + AmountOfCustomers.Count);
+           
+                Console.WriteLine("Number of customers Today " + daysPlayed[i].customer.AmountOfCustomers.Count);
                 Console.ReadKey();
+     
+
             }
         }
     }

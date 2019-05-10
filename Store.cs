@@ -70,7 +70,6 @@ namespace LemonadeStand
                     break;
             }
         }
-
         public void BuyLemons(Player player)
         {
             Console.WriteLine("How many lemons would you like to buy? (5, 10, or 20,)");

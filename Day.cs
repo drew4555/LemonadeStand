@@ -13,22 +13,20 @@ namespace LemonadeStand
         public List<Customer> AmountOfCustomers;
         public CustomerBase customer;
         //constructor
-        public Day()
+        public Day(Random rng)
         {
-            weather = new Weather();
-            customer = new CustomerBase(weather);
-
-
+            weather = new Weather(rng);
+            customer = new CustomerBase(weather, rng);
         }
 
         //can do
         //public void SellLemonade(Player player, Customer customer)
         //{
-        //    foreach(Customer buys in AmountOfCustomers)
+        //    foreach (Customer buys in AmountOfCustomers)
         //    {
-        //        if (poop)
+        //        if ()
         //        {
-        //            thing.inventory.cups--;
+        //            player.inventory.cups--;
         //        }
         //    }
         //}

@@ -9,44 +9,43 @@ namespace LemonadeStand
     public class Weather
     {
         //has a //member variables
-        private List<int> forcastedTemps;
+        //private List<int> forcastedTemps;
         public int actualTemp;
         public List<string> weatherConditions;
         public string currentCondition;
         private int index;
 
         //constructor
-        public Weather()
+        public Weather(Random rng)
         {
             weatherConditions = new List<string>();
-            forcastedTemps = new List<int>();
+            //forcastedTemps = new List<int>();
             weatherConditions.Add("sunny");
             weatherConditions.Add("cloudy");
             weatherConditions.Add("raining");
             weatherConditions.Add("muggy");
-            GetForcastedTemp();
-            GetActualTemp();
-            GetWeatherCondition();
+            //GetForcastedTemp(); //to do for 7 day forcast
+            GetActualTemp(rng);
+            GetWeatherCondition(rng);
         }
         //can do //member methods
-        public void GetForcastedTemp()
+        //public void GetForcastedTemp()
+        //{
+        //    Random ForcastedTemps = new Random();
+        //    while (forcastedTemps.Count < 7)
+        //    {
+        //        forcastedTemps.Add(ForcastedTemps.Next(60, 100));
+        //    }
+        //}
+        public int GetActualTemp(Random rng)
         {
-            Random ForcastedTemps = new Random();
-            while (forcastedTemps.Count < 7)
-            {
-                forcastedTemps.Add(ForcastedTemps.Next(60, 100));
-            }
-        }
-        public int GetActualTemp()
-        {
-            Random ActualTemp = new Random();
-            actualTemp = ActualTemp.Next(60, 100);
+            
+            actualTemp = rng.Next(60, 100);
             return actualTemp;
         }
-        public string GetWeatherCondition()
+        public string GetWeatherCondition(Random rng)
         {
-            Random WeatherCondition = new Random();
-            index = WeatherCondition.Next(weatherConditions.Count);
+            index = rng.Next(weatherConditions.Count);
             if (weatherConditions[index] == "sunny")
             {
                 currentCondition = "sunny";
