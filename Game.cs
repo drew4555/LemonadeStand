@@ -18,25 +18,28 @@ namespace LemonadeStand
         public Recipe recipe;
         public CustomerBase customerbase;
         public Customer customer;
+        public List<Customer> AmountOfCustomers;
+        public int i;
 
         //spawner
         public Game()
         {
-            
+            i = 1;
             daysPlayed = new List<Day>();
             player = new Player();
             store = new Store();
             inventory = new Inventory();
             recipe = new Recipe();
-            RunGame(daysPlayed, customerbase, player);
+            AmountOfCustomers = new List<Customer>();
+            RunGame(daysPlayed, player);
+
         }
         //can do
-        public void RunGame(List<Day> daysPlayed, CustomerBase customerbase, Player player)
+        public void RunGame(List<Day> daysPlayed, Player player)
         {
             Start();
             GetDays();
-
-            while (daysPlayed.Count > 0)
+            while (i <= daysPlayed.Count)
             {
                 new Weather();
                 player.inventory.DisplayCurrentInventory();
@@ -75,26 +78,10 @@ namespace LemonadeStand
                     case "no":
                         break;
                 }
-                customerbase.DisplayCustomers();
-               
-
+                DisplayCustomers();
+                i++;
+                Console.Clear();
             }
-
-
-                //for(int i= 0; i < daysPlayed.Count; i++)
-                //{
-                //    // run a whole day!
-                //    // display weather 
-                //    // display forcast
-                //    // ask to go to store
-                //    // run stand
-                //    // get end of day report
-                //    daysPlayed[i].weather.DisplayWeather();
-
-
-
-
-            
 
             void Start()
             {
@@ -142,6 +129,11 @@ namespace LemonadeStand
                 Console.WriteLine("You are playing for " + daysPlayed.Count + " days");
                 Console.ReadKey();
                 Console.Clear();
+            }
+            void DisplayCustomers()
+            {
+                Console.WriteLine("Number of customers Today " + AmountOfCustomers.Count);
+                Console.ReadKey();
             }
         }
     }

@@ -61,11 +61,5 @@ namespace LemonadeStand
                 }
             }
         }
-
-        public void DisplayCustomers()
-        {
-            Console.WriteLine("Number of customers Today " + AmountOfCustomers.Count);
-            Console.ReadKey();
-        }
     }
 }
