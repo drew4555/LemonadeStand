@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         //member varaibles
         public Weather weather;
+        public bool isBuying;
 
         //constructor
         public Customer(Weather weather, Random isBuy)
@@ -20,28 +21,28 @@ namespace LemonadeStand
         }
 
         //member methods
-        public bool ChooseToBuy(Random isBuy)
+        public void ChooseToBuy(Random isBuy)
         {
-            int Isbuying = isBuy.Next(0, 101);
-            if (Isbuying % 2 == 0 && weather.currentCondition == "sunny")
+            int isbuying = isBuy.Next(0, 101);
+            if (isbuying % 2 == 0 && weather.currentCondition == "sunny")
             {
-                return true;
+                isBuying = true;
             }
-            else if(Isbuying % 3 == 0 && weather.currentCondition == "cloudy")
+            else if(isbuying % 3 == 0 && weather.currentCondition == "cloudy")
             {
-                return true;
+                isBuying = true;
             }
-            else if (Isbuying % 5 == 0 && weather.currentCondition == "muggy")
+            else if (isbuying % 5 == 0 && weather.currentCondition == "muggy")
             {
-                return true;
+                isBuying = true;
             }
-            else if (Isbuying % 7 == 0 && weather.currentCondition == "raining")
+            else if (isbuying % 7 == 0 && weather.currentCondition == "raining")
             {
-                return true;
+                isBuying = true;
             }
             else
             {
-                return false;
+                isBuying = false;
             }
         }
     }

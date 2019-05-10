@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Player
+    public class Player
     {
         //has a 
         public Inventory inventory;
@@ -43,7 +43,8 @@ namespace LemonadeStand
         }
         public void SellLemonade(Player player, Pitcher pitcher)
         {
-            while (pitcher.cupsToPitcher > 0)
+            while (pitcher.cupsToPitcher > 0 && player.inventory.lemons > recipe.lemon && player.inventory.sugar > recipe.sugar && 
+                player.inventory.ice > recipe.ice)
             {
                 pitcher.cupsToPitcher--;
                 if(pitcher.cupsToPitcher == 0)

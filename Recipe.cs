@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Recipe
+    public class Recipe
     {
         //member variables
         public int lemon;
@@ -20,12 +20,10 @@ namespace LemonadeStand
             lemon = 4;
             sugar = 4;
             ice = 4;
-            lemonadePrice = .25;
+            lemonadePrice = 1.00;
         }
 
-        //member methods
-        
-        
+        //member methods      
         public void DisplayCurrentRecipe()
         {
             Console.WriteLine("The current lemonade recipe is\n " + lemon + " " + "Lemons, " + sugar + " " + "Sugar, and "

@@ -10,8 +10,9 @@ namespace LemonadeStand
     { 
         //has a
         public Weather weather;
-        public List<Customer> AmountOfCustomers;
         public CustomerBase customer;
+
+ 
         //constructor
         public Day(Random rng)
         {
@@ -20,15 +21,19 @@ namespace LemonadeStand
         }
 
         //can do
-        //public void SellLemonade(Player player, Customer customer)
-        //{
-        //    foreach (Customer buys in AmountOfCustomers)
-        //    {
-        //        if ()
-        //        {
-        //            player.inventory.cups--;
-        //        }
-        //    }
-        //}
+        public void SellLemonade(Player player, Pitcher pitcher)
+
+        {
+            foreach (Customer potintialPurchaser in customer.AmountOfCustomers)
+            {
+                if (potintialPurchaser.isBuying == true)
+                {
+                    player.inventory.cups--;
+                    player.inventory.playercash += player.recipe.lemonadePrice;
+                    pitcher.cupsToPitcher--;
+                    Console.WriteLine("You sold alot today");
+                }
+            }
+        }
     }
 }

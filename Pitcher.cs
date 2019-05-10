@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Pitcher
+    public class Pitcher
     {
         //member variables
         public double pitcher;
@@ -19,9 +19,35 @@ namespace LemonadeStand
             player.inventory.ice -= recipe.ice;
             player.inventory.sugar -= recipe.sugar;
             cupsToPitcher = 10;
-            
+            InventoryCheck(player);
         }
         //member methods
+        public void InventoryCheck(Player player, Game game)
+        {
+            if (player.inventory.lemons < player.recipe.lemon)
+            {
+                Console.WriteLine("you do not have enough lemons");
+                game.endDay();
+            }
+            else if (player.inventory.ice < player.recipe.ice)
+            {
+                Console.WriteLine("You do not have enough Ice");
+                game.endDay();
+            }
+            else if (player.inventory.sugar < player.recipe.sugar)
+            {
+                Console.WriteLine("you do not have enough Sugar");
+                game.endDay();
+            }
+            else if (player.inventory.cups < player.pitcher.cupsToPitcher)
+            {
+                Console.WriteLine("you do not have enough cups");
+                game.endDay();
+            }
+        }
+        
+
+           
 
     }
 }

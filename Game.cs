@@ -6,37 +6,39 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Game
+    public class Game
     {
         //has a 
         public List<Day> daysPlayed;
         public Store store;
         public Player player;
         public int i;
-        public CustomerBase customerbase;
-        public int c;
-        public Random rando;
+        public Random randoCalrissian;
+        public Customer customer;
+        public Pitcher pitcher;
+        // public Day day;
+
+
+
         //spawner
         public Game()
         {
-            rando = new Random();
+            randoCalrissian = new Random();
             i = 0;
             daysPlayed = new List<Day>();
             player = new Player();
             store = new Store();
-            RunGame(daysPlayed,player,customerbase);
-
+            RunGame();
         }
-        //can do
-        public void RunGame(List<Day> daysPlayed, Player player, CustomerBase customerbase)
-        {
-            
 
+        //can do
+        public void RunGame()
+        {
             Start();
             GetDays();
             while (i <= daysPlayed.Count - 1)
+
             {
-            
                 Console.WriteLine("day " + (i + 1));
                 player.inventory.DisplayCurrentInventory();
                 Console.WriteLine("Do you want to go to store?");
@@ -55,7 +57,6 @@ namespace LemonadeStand
                             break;
                         }
                 }
-                Console.Clear();
                 daysPlayed[i].weather.DisplayWeather();
                 player.inventory.DisplayCurrentInventory();
                 player.recipe.DisplayCurrentRecipe();
@@ -73,7 +74,15 @@ namespace LemonadeStand
                     case "no":
                         break;
                 }
+                pitcher = new Pitcher(player, player.recipe);
+                if (pitcher.cupsToPitcher == 0)
+                {
+                    pitcher = new Pitcher(player, player.recipe);
+                }
+                
                 DisplayCustomers();
+                daysPlayed[i].SellLemonade(player, pitcher);
+                endDay();
                 i++;
                 Console.Clear();
             }
@@ -90,27 +99,26 @@ namespace LemonadeStand
                 Console.WriteLine("Please Choose the Number of Days You would Like To Play (7, 14, or 30)");
                 string noOfDays;
                 noOfDays = Console.ReadLine();
-
                 switch (noOfDays)
                 {
                     case "7":
                         while (daysPlayed.Count < 7)
                         {
-                            Day day1 = new Day(rando);
+                            Day day1 = new Day(randoCalrissian);
                             daysPlayed.Add(day1);
                         }
                         break;
                     case "14":
                         while (daysPlayed.Count < 14)
                         {
-                            Day day1 = new Day(rando);
+                            Day day1 = new Day(randoCalrissian);
                             daysPlayed.Add(day1);
                         }
                         break;
                     case "30":
                         while (daysPlayed.Count < 30)
                         {
-                            Day day1 = new Day(rando);
+                            Day day1 = new Day(randoCalrissian);
                             daysPlayed.Add(day1);
                         }
                         break;
@@ -125,17 +133,19 @@ namespace LemonadeStand
                 Console.ReadKey();
                 Console.Clear();
             }
-             void DisplayCustomers()
+            void DisplayCustomers()
             {
-           
                 Console.WriteLine("Number of customers Today " + daysPlayed[i].customer.AmountOfCustomers.Count);
                 Console.ReadKey();
-     
-
             }
+        }
+        public void endDay()
+        {
+            Console.WriteLine("End of Day");
         }
     }
 }
+
 
 
 
