@@ -9,7 +9,7 @@ namespace LemonadeStand
     public class Weather
     {
         //has a //member variables
-        //private List<int> forcastedTemps;
+        private List<int> forcastedTemps;
         public int actualTemp;
         public List<string> weatherConditions;
         public string currentCondition;
@@ -19,24 +19,24 @@ namespace LemonadeStand
         public Weather(Random rng)
         {
             weatherConditions = new List<string>();
-            //forcastedTemps = new List<int>();
+            forcastedTemps = new List<int>();
             weatherConditions.Add("sunny");
             weatherConditions.Add("cloudy");
             weatherConditions.Add("raining");
             weatherConditions.Add("muggy");
-            //GetForcastedTemp(); //to do for 7 day forcast
+            GetForcastedTemp(rng); //to do for 7 day forcast
             GetActualTemp(rng);
             GetWeatherCondition(rng);
         }
-        //can do //member methods
-        //public void GetForcastedTemp()
-        //{
-        //    Random ForcastedTemps = new Random();
-        //    while (forcastedTemps.Count < 7)
-        //    {
-        //        forcastedTemps.Add(ForcastedTemps.Next(60, 100));
-        //    }
-        //}
+       /* can do*/ //member methods
+        public void GetForcastedTemp(Random rng)
+        {
+            Random ForcastedTemps = new Random();
+            while (forcastedTemps.Count < 7)
+            {
+                forcastedTemps.Add(ForcastedTemps.Next(60, 100));
+            }
+        }
         public int GetActualTemp(Random rng)
         {
             
@@ -68,6 +68,7 @@ namespace LemonadeStand
         {
             Console.WriteLine("actual temp: " + actualTemp);
             Console.WriteLine("It is currently " + currentCondition);
+            Console.WriteLine("The seven day forcast is " + forcastedTemps);
             //Console.ReadKey();
         }
     }

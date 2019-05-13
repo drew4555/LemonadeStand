@@ -20,7 +20,7 @@ namespace LemonadeStand
             lemon = 4;
             sugar = 4;
             ice = 4;
-            lemonadePrice = 1.00;
+            lemonadePrice = .50;
         }
 
         //member methods      

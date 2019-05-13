@@ -11,43 +11,45 @@ namespace LemonadeStand
         //member variables
         public double pitcher;
         public double cupsToPitcher;
+
         //constructor
-        public Pitcher(Player player, Recipe recipe)
+        public Pitcher(Player player, Recipe recipe, List<Day> daysPlayed, List<double> noOfCustomersBought)
         {
             pitcher = recipe.lemon + recipe.ice + recipe.sugar;
-            player.inventory.lemons -= recipe.lemon;
-            player.inventory.ice -= recipe.ice;
-            player.inventory.sugar -= recipe.sugar;
+            
             cupsToPitcher = 10;
-            InventoryCheck(player);
+            InventoryCheck(player, daysPlayed, noOfCustomersBought );
         }
         //member methods
-        public void InventoryCheck(Player player, Game game)
+        public void InventoryCheck(Player player, List<Day> daysPlayed, List<double> noOfCustomersBought)
         {
             if (player.inventory.lemons < player.recipe.lemon)
             {
                 Console.WriteLine("you do not have enough lemons");
-                game.endDay();
+                daysPlayed[1].EndDay(noOfCustomersBought);
             }
             else if (player.inventory.ice < player.recipe.ice)
             {
                 Console.WriteLine("You do not have enough Ice");
-                game.endDay();
+                daysPlayed[1].EndDay(noOfCustomersBought);
             }
             else if (player.inventory.sugar < player.recipe.sugar)
             {
                 Console.WriteLine("you do not have enough Sugar");
-                game.endDay();
+                daysPlayed[1].EndDay(noOfCustomersBought);
             }
-            else if (player.inventory.cups < player.pitcher.cupsToPitcher)
+            else if (player.inventory.cups < cupsToPitcher)
             {
                 Console.WriteLine("you do not have enough cups");
-                game.endDay();
+                daysPlayed[1].EndDay(noOfCustomersBought);
+            }
+            else if (player.inventory.lemons > player.recipe.lemon && player.inventory.ice > player.recipe.ice && player.inventory.sugar >
+                player.recipe.sugar)
+            {
+                player.inventory.lemons -= player.recipe.lemon;
+                player.inventory.ice -= player.recipe.ice;
+                player.inventory.sugar -= player.recipe.sugar;
             }
         }
-        
-
-           
-
     }
 }

@@ -16,6 +16,10 @@ namespace LemonadeStand
         public Random randoCalrissian;
         public Customer customer;
         public Pitcher pitcher;
+        public Game game;
+        public List<double> noOfCustomersBought;
+
+
         // public Day day;
 
 
@@ -28,11 +32,12 @@ namespace LemonadeStand
             daysPlayed = new List<Day>();
             player = new Player();
             store = new Store();
-            RunGame();
+            RunGame(noOfCustomersBought);
         }
 
         //can do
-        public void RunGame()
+
+        public void RunGame(List<double> noOfCustomersBought)
         {
             Start();
             GetDays();
@@ -74,77 +79,82 @@ namespace LemonadeStand
                     case "no":
                         break;
                 }
-                pitcher = new Pitcher(player, player.recipe);
-                if (pitcher.cupsToPitcher == 0)
-                {
-                    pitcher = new Pitcher(player, player.recipe);
-                }
-                
-                DisplayCustomers();
-                daysPlayed[i].SellLemonade(player, pitcher);
-                endDay();
-                i++;
-                Console.Clear();
-            }
 
-            void Start()
-            {
-                Console.WriteLine("Welcome to LemonadeStand");
-                Console.ReadKey();
-                Console.Clear();
-            }
-
-            void GetDays()
-            {
-                Console.WriteLine("Please Choose the Number of Days You would Like To Play (7, 14, or 30)");
-                string noOfDays;
-                noOfDays = Console.ReadLine();
-                switch (noOfDays)
+                pitcher = new Pitcher(player, player.recipe, daysPlayed, noOfCustomersBought);
+                if (pitcher.cupsToPitcher == 10)
                 {
-                    case "7":
-                        while (daysPlayed.Count < 7)
-                        {
-                            Day day1 = new Day(randoCalrissian);
-                            daysPlayed.Add(day1);
-                        }
-                        break;
-                    case "14":
-                        while (daysPlayed.Count < 14)
-                        {
-                            Day day1 = new Day(randoCalrissian);
-                            daysPlayed.Add(day1);
-                        }
-                        break;
-                    case "30":
-                        while (daysPlayed.Count < 30)
-                        {
-                            Day day1 = new Day(randoCalrissian);
-                            daysPlayed.Add(day1);
-                        }
-                        break;
-                    default:
-                        Console.WriteLine("You Must Choose Either 7,14, or 30");
-                        Console.ReadKey();
-                        Console.Clear();
-                        GetDays();
-                        break;
+                    
+                    DisplayCustomers();
+                    daysPlayed[i].SellLemonade(player, pitcher);
+                    daysPlayed[i].EndDay(noOfCustomersBought);
+                    i++;
+                    Console.Clear();
                 }
-                Console.WriteLine("You are playing for " + daysPlayed.Count + " days");
-                Console.ReadKey();
-                Console.Clear();
-            }
-            void DisplayCustomers()
-            {
-                Console.WriteLine("Number of customers Today " + daysPlayed[i].customer.AmountOfCustomers.Count);
-                Console.ReadKey();
+                else if(pitcher.cupsToPitcher == 0)
+                {
+                    pitcher.InventoryCheck(player, daysPlayed, noOfCustomersBought);
+                    pitcher = new Pitcher(player, player.recipe, daysPlayed, noOfCustomersBought);
+                    daysPlayed[i].EndDay(noOfCustomersBought);
+                    i++;
+                    Console.Clear();
+                }
             }
         }
-        public void endDay()
+            void Start()
         {
-            Console.WriteLine("End of Day");
+            Console.WriteLine("Welcome to LemonadeStand");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        void GetDays()
+        {
+            Console.WriteLine("Please Choose the Number of Days You would Like To Play (7, 14, or 30)");
+            string noOfDays;
+            noOfDays = Console.ReadLine();
+            switch (noOfDays)
+            {
+                case "7":
+                    while (daysPlayed.Count < 7)
+                    {
+                        Day day1 = new Day(randoCalrissian);
+                        daysPlayed.Add(day1);
+                    }
+                    break;
+                case "14":
+                    while (daysPlayed.Count < 14)
+                    {
+                        Day day1 = new Day(randoCalrissian);
+                        daysPlayed.Add(day1);
+                    }
+                    break;
+                case "30":
+                    while (daysPlayed.Count < 30)
+                    {
+                        Day day1 = new Day(randoCalrissian);
+                        daysPlayed.Add(day1);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("You Must Choose Either 7,14, or 30");
+                    Console.ReadKey();
+                    Console.Clear();
+                    GetDays();
+                    break;
+            }
+            Console.WriteLine("You are playing for " + daysPlayed.Count + " days");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        void DisplayCustomers()
+        {
+            Console.WriteLine("Number of customers Today " + daysPlayed[i].customer.AmountOfCustomers.Count);
+            Console.ReadKey();
         }
     }
+   
 }
+
 
 
 

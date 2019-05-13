@@ -41,7 +41,7 @@ namespace LemonadeStand
             Console.WriteLine("how much do you want to charge for your lemonade?");
             recipe.lemonadePrice = double.Parse(Console.ReadLine());
         }
-        public void SellLemonade(Player player, Pitcher pitcher)
+        public void SellLemonade(Player player, Pitcher pitcher, List<Day> daysPlayed, List<double> noOfCustomersBought)
         {
             while (pitcher.cupsToPitcher > 0 && player.inventory.lemons > recipe.lemon && player.inventory.sugar > recipe.sugar && 
                 player.inventory.ice > recipe.ice)
@@ -49,7 +49,8 @@ namespace LemonadeStand
                 pitcher.cupsToPitcher--;
                 if(pitcher.cupsToPitcher == 0)
                 {
-                    pitcher = new Pitcher(player,recipe);
+                    pitcher.InventoryCheck(player, daysPlayed, noOfCustomersBought);
+                    pitcher = new Pitcher(player,recipe,daysPlayed,noOfCustomersBought);
                 }
             }
         }

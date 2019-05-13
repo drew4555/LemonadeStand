@@ -31,9 +31,17 @@ namespace LemonadeStand
                     player.inventory.cups--;
                     player.inventory.playercash += player.recipe.lemonadePrice;
                     pitcher.cupsToPitcher--;
-                    Console.WriteLine("You sold alot today");
+                    
                 }
             }
+        }
+        public void EndDay(List<double> noOfCustomersBought)
+        {
+            Console.WriteLine("End of Day");
+/*            Console.WriteLine("you sold lemonade to " + noOfCustomersBought.Count)*/;
+            Console.WriteLine("press enter for next day");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
